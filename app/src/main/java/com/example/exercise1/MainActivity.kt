@@ -23,29 +23,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateCarLoan(view: View){
-        val carPrice = findViewById<EditText>(R.id.editTextCarPrice)
-        val downPayment = findViewById<EditText>(R.id.editTextDownPayment)
-        val loanPeriod = findViewById<EditText>(R.id.editTextLoanPeriod)
-        val interestRate = findViewById<EditText>(R.id.editTextInterestRate)
         val finalLoan = findViewById<TextView>(R.id.textViewLoan)
         val finalInterest = findViewById<TextView>(R.id.textViewInterest)
         val monthlyRepay = findViewById<TextView>(R.id.textViewMonthlyRepayment)
 
-        val carLoan = carPrice.text.toString().toInt() - downPayment.text.toString().toInt()
-        val loanInterest = carLoan * interestRate.text.toString().toDouble() * loanPeriod.text.toString().toInt()
-        val carMonthlyRepay = (carLoan + loanInterest) / loanPeriod.text.toString().toInt() / 12
+        val carLoan = findViewById<EditText>(R.id.editTextCarPrice).text.toString().toInt() - findViewById<EditText>(R.id.editTextDownPayment).text.toString().toInt()
+        val loanInterest = carLoan * findViewById<EditText>(R.id.editTextInterestRate).text.toString().toDouble() * findViewById<EditText>(R.id.editTextLoanPeriod).text.toString().toInt()
+        val carMonthlyRepay = (carLoan + loanInterest) / findViewById<EditText>(R.id.editTextLoanPeriod).text.toString().toInt() / 12
         finalLoan.text = carLoan.toString()
         finalInterest.text = loanInterest.toString()
         monthlyRepay.text = carMonthlyRepay.toString()
     }
 
     private fun resetText(view: View){
-        findViewById<EditText>(R.id.editTextCarPrice).getText().clear()
-        findViewById<EditText>(R.id.editTextDownPayment).getText().clear()
-        findViewById<EditText>(R.id.editTextLoanPeriod).getText().clear()
-        findViewById<EditText>(R.id.editTextInterestRate).getText().clear()
-        findViewById<TextView>(R.id.textViewLoan).setText("Loan:")
-        findViewById<TextView>(R.id.textViewInterest).setText("Interest:")
-        findViewById<TextView>(R.id.textViewMonthlyRepayment).setText("Monthly Repayment:")
+        findViewById<EditText>(R.id.editTextCarPrice).text.clear()
+        findViewById<EditText>(R.id.editTextDownPayment).text.clear()
+        findViewById<EditText>(R.id.editTextLoanPeriod).text.clear()
+        findViewById<EditText>(R.id.editTextInterestRate).text.clear()
+        findViewById<TextView>(R.id.textViewLoan).text = "Loan:"
+        findViewById<TextView>(R.id.textViewInterest).text = "Interest:"
+        findViewById<TextView>(R.id.textViewMonthlyRepayment).text = "Monthly Repayment:"
     }
 }
